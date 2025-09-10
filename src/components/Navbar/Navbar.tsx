@@ -1,39 +1,61 @@
-import type React from "react";
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import "./Navbar.css";
+// src/components/Navbar.tsx
+import { useState, useEffect } from 'react';
+import { useNavigate, NavLink } from 'react-router-dom';
+import type { City } from '../../types/types';
+import { getAllCities } from '../../utils/cityUtils';
+import CitySelect from '../CitySelect/CitySelect';
+import './Navbar.css';
 
-const Navbar: React.FC = () => {
-  // State to set the to open and closed
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  // Function to toggle open and close on menu
-  const toggleMenu = () => setIsOpen(!isOpen);
-  // Function to close menu when clicking a link
-  const closeMenu = () => setIsOpen(false);
+const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [allCities, setAllCities] = useState<City[]>([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setAllCities(getAllCities());
+
+    const interval = setInterval(() => {
+      setAllCities(getAllCities());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleCitySelect = (cityName: string) => {
+    if (cityName) {
+      navigate(`/city/${cityName}`);
+      setMenuOpen(false);
+    }
+  };
 
   return (
     <nav className="navbar">
-      <section className="logo">World Clock</section>
-      {/* If isOpen is true, add "open" to className */}
-      <section className={`nav-links ${isOpen ? "open" : ""}`}>
-        <NavLink to="/" onClick={closeMenu}>
-          Home
-        </NavLink>
-        <NavLink to="/favorites" onClick={closeMenu}>
-          Favorites
-        </NavLink>
-      </section>
-      <section
-        // If isOpen is true, add "open" to className
-        className={`hamburger ${isOpen ? "open" : ""}`}
-        onClick={toggleMenu}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </section>
-      {/* If isOpen is true, show the overlay and close the menu when clicking outside */}
-      {isOpen && <section className="overlay" onClick={closeMenu}></section>}
+      <div className="navbar-left">
+        <h1>🌍 World Clock</h1>
+      </div>
+
+      <div className="navbar-right desktop">
+        <CitySelect cities={allCities} onSelect={handleCitySelect} />
+        <NavLink to="/" className="nav-link">Home</NavLink>
+        <NavLink to="/favorites" className="nav-link">Favorites</NavLink>
+        <NavLink to="/add-city" className="nav-link">Lägg till stad</NavLink>
+      </div>
+
+      <div className="hamburger" onClick={() => setMenuOpen(true)}>☰</div>
+
+      {menuOpen && (
+        <div className="overlay-menu">
+          <div className="overlay-content">
+            <button className="close-btn" onClick={() => setMenuOpen(false)}>✕</button>
+
+            <CitySelect cities={allCities} onSelect={handleCitySelect} />
+
+            <NavLink to="/" className="overlay-link" onClick={() => setMenuOpen(false)}>Home</NavLink>
+            <NavLink to="/favorites" className="overlay-link" onClick={() => setMenuOpen(false)}>Favorites</NavLink>
+            <NavLink to="/add-city" className="overlay-link" onClick={() => setMenuOpen(false)}>Lägg till stad</NavLink>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

@@ -10,6 +10,11 @@ const Navbar: React.FC = () => {
             <NavLink to="/">Home</NavLink>
             <NavLink to="/favorites">Favorites</NavLink>
         </section>
+        <section className="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </section>
 
     </nav>
   )

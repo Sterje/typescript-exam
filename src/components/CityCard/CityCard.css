@@ -1,0 +1,108 @@
+.city-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #daf7ff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 400px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.city-name {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.digital-time {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.analog-clock {
+  width: 120px;
+  height: 120px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.clock-face .hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  background: #333;
+}
+
+.hand.hour {
+  width: 4px;
+  height: 30px;
+}
+
+.hand.minute {
+  width: 3px;
+  height: 45px;
+}
+
+.hand.second {
+  width: 2px;
+  height: 55px;
+  background: red;
+}
+
+.favorite-button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.favorite-button:hover {
+  background-color: #005fa3;
+}
+
+@media (max-width: 480px) {
+  .city-card {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .city-name {
+    font-size: 1.3rem;
+  }
+
+  .digital-time {
+    font-size: 1rem;
+  }
+
+  .analog-clock {
+    width: 90px;
+    height: 90px;
+  }
+
+  .hand.hour {
+    height: 25px;
+  }
+
+  .hand.minute {
+    height: 35px;
+  }
+
+  .hand.second {
+    height: 45px;
+  }
+
+  .favorite-btn {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+}

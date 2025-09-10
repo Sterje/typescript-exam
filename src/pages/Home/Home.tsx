@@ -1,8 +1,12 @@
 import SearchCity from "../../components/SearchCity/SearchCity";
+import "./Home.css"
 
 const Home = () => {
   return (
-    <SearchCity />
+    <section className="search-city-container">
+
+      <SearchCity />
+    </section>
   )
 }
 export default Home

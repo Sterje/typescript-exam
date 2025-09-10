@@ -4,6 +4,7 @@ import { cities } from '../../data/cities'
 import type { City } from "../../types/types"
 import CityCard from "../../components/CityCard/CityCard"
 import { toggleFavorite, isFavorite } from "../../utils/favoriteUtils"
+import SearchCity from "../../components/SearchCity/SearchCity"
 
 const CityPage = () => {
     const { cityName } = useParams<{ cityName: string }>();
@@ -26,12 +27,16 @@ const CityPage = () => {
         return <p>City not found</p>;
     }
     return (
-        <CityCard
-            city={cityData}
-            isFavorite={favorite}
-            onToggleFavorite={handleToggleFavorite}
-        />
+        <>
+            <SearchCity />
+            <CityCard
+                city={cityData}
+                isFavorite={favorite}
+                onToggleFavorite={handleToggleFavorite}
+            />
+        </>
     )
 }
 
 export default CityPage
+  

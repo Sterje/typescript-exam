@@ -31,6 +31,7 @@ export type TimeZone =
 
 /** Interface for a city  */
 export interface City {
+  id: string;
   name: string;
   timezone: TimeZone;
   isCustom?: boolean; // If the city has been added by the user

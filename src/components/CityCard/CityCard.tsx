@@ -16,8 +16,8 @@ const CityCard: React.FC<CityCardProps> = ({
   isFavorite = false,
   onToggleFavorite,
 }) => {
-// State to hold the current local time in the city's timezone
-// DateTime coming from luxon or null before it's set
+  // State to hold the current local time in the city's timezone
+  // DateTime coming from luxon or null before it's set
   const [localTime, setLocalTime] = useState<DateTime | null>(null);
 
   useEffect(() => {
@@ -31,24 +31,37 @@ const CityCard: React.FC<CityCardProps> = ({
     }, 1000);
     return () => clearInterval(interval);
   }, [city?.timezone]);
-    // Function to handle favorite button click
+  // Function to handle favorite button click
   const handleFavoriteClick = () => {
-    // IF onToggleFavorite prop is True, call it with the city name
+    // IF onToggleFavorite prop is True, call it with the city id
     if (onToggleFavorite) {
-      onToggleFavorite(city.name);
+      onToggleFavorite(city.id);
     }
   };
   return (
     <section className="city-card">
       <h2 className="city-name">{city.name}</h2>
-      <p className="digital-time">{localTime ? localTime.toFormat("HH:mm:ss") : "Loading..."}</p>
-      <section className="analog-clock">
-        <section className="clock-face">
-          <div className="hand hour" style={{ transform: `rotate(${localTime.hour * 30}deg)` }} />
-          <div className="hand minute" style={{ transform: `rotate(${localTime.minute * 6}deg)` }} />
-          <div className="hand second" style={{ transform: `rotate(${localTime.second * 6}deg)` }} />
+      <p className="digital-time">
+        {localTime ? localTime.toFormat("HH:mm:ss") : "Loading..."}
+      </p>
+      {localTime && (
+        <section className="analog-clock">
+          <section className="clock-face">
+            <div
+              className="hand hour"
+              style={{ transform: `rotate(${localTime.hour * 30}deg)` }}
+            />
+            <div
+              className="hand minute"
+              style={{ transform: `rotate(${localTime.minute * 6}deg)` }}
+            />
+            <div
+              className="hand second"
+              style={{ transform: `rotate(${localTime.second * 6}deg)` }}
+            />
+          </section>
         </section>
-      </section>
+      )}
 
       <button className="favorite-button" onClick={handleFavoriteClick}>
         {isFavorite ? "Remove from Favorites" : "Add to Favorites"}

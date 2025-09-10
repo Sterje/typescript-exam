@@ -4,12 +4,12 @@ export const getFavorites = (): string[] => {
 };
 
 // Function to toggle favorite status of a city
-export const toggleFavorite = (cityName: string): string[] => {
+export const toggleFavorite = (id: string): string[] => {
   const current = getFavorites();
   // If city already exists in favorites, remove it, else add it
-  const updated = current.includes(cityName)
-    ? current.filter((name) => name !== cityName)
-    : [...current, cityName];
+  const updated = current.includes(id)
+    ? current.filter((cityId) => cityId !== id)
+    : [...current, id];
 
   // Save updated favorites list to localStorage
   localStorage.setItem("favorites", JSON.stringify(updated));

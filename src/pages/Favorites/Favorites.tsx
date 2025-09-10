@@ -3,6 +3,7 @@ import CityCard from "../../components/CityCard/CityCard";
 import { cities as defaultCities } from "../../data/cities";
 import type { City } from "../../types/types";
 import { getFavorites, toggleFavorite } from "../../utils/favoriteUtils";
+import "./Favorites.css";
 
 const Favorites = () => {
   // State to hold favorite cities using City type array
@@ -26,7 +27,7 @@ const Favorites = () => {
     );
     setFavoriteCities(matchedFavorites);
   }, []);
-    // Function to handle toggling favorite status
+  // Function to handle toggling favorite status
   const handleToggleFavorite = (cityID: string): void => {
     const updatedFavorites = toggleFavorite(cityID);
     setFavoriteCities((prevCities) =>
@@ -35,18 +36,20 @@ const Favorites = () => {
   };
   return (
     <section className="favorites-page">
-      <h2>Favorite Cities</h2>
+      <h2 className="favorites-title">Favorite Cities</h2>
       {favoriteCities.length === 0 ? (
         <p>No favorite cities added yet.</p>
       ) : (
-        favoriteCities.map((city) => (
-          <CityCard
-            key={city.id}
-            city={city}
-            isFavorite={true}
-            onToggleFavorite={handleToggleFavorite}
-          />
-        ))
+        <section className="favorites-grid">
+          {favoriteCities.map((city) => (
+            <CityCard
+              key={city.id}
+              city={city}
+              isFavorite={true}
+              onToggleFavorite={handleToggleFavorite}
+            />
+          ))}
+        </section>
       )}
     </section>
   );

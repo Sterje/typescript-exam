@@ -19,7 +19,15 @@ export type TimeZone =
   | "Asia/Singapore"
   | "America/Toronto"
   | "Asia/Seoul"
-  | "Europe/Moscow";
+  | "Europe/Moscow"
+  | "Europe/London"
+  | "Europe/Paris"
+  | "Europe/Berlin"
+  | "Europe/Moscow"
+  | "America/Sao_Paulo"
+  | "America/Mexico_City"
+  | "America/Argentina/Buenos_Aires"
+  | "Asia/Hong_Kong";
 
 /** Interface for a city  */
 export interface City {

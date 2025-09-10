@@ -1,0 +1,31 @@
+/* Favorites.css */
+
+.favorites-container {
+  padding: 30px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.favorites-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Responsivitet */
+@media (max-width: 600px) {
+  .favorites-title {
+    font-size: 1.5rem;
+  }
+
+  .favorites-grid {
+    gap: 15px;
+  }
+}

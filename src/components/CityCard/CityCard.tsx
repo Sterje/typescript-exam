@@ -13,17 +13,19 @@ interface CityCardProps {
 const CityCard: React.FC<CityCardProps> = ({
   city,
   isFavorite = false,
-  onToggleFavorite
+  onToggleFavorite,
 }) => {
-  const [localTime, setLocalTime] = useState(DateTime.now().setZone(city?.timezone)
-  );
+  const [localTime, setLocalTime] = useState<DateTime | null>(null);
 
   useEffect(() => {
+    if (!city?.timezone) return;
+    setLocalTime(DateTime.now().setZone(city.timezone));
+
     const interval = setInterval(() => {
       setLocalTime(DateTime.now().setZone(city.timezone));
     }, 1000);
     return () => clearInterval(interval);
-  }, [city.timezone]);
+  }, [city?.timezone]);
 
   const handleFavoriteClick = () => {
     if (onToggleFavorite) {
@@ -33,7 +35,7 @@ const CityCard: React.FC<CityCardProps> = ({
   return (
     <section className="city-card">
       <h2 className="city-name">{city.name}</h2>
-      <p className="digital-time">{localTime.toFormat("HH:mm:ss")}</p>
+      <p className="digital-time">{localTime ? localTime.toFormat("HH:mm:ss") : "Loading..."}</p>
       <section className="analog-clock">
         <section className="clock-face">
           <section className="hand hour"></section>

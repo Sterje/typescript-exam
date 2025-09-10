@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
-import cities from '../../data/cities.json'
+import { cities } from '../../data/cities'
 import type { City } from "../../types/types"
 import CityCard from "../../components/CityCard/CityCard"
 import { toggleFavorite, isFavorite } from "../../utils/favoriteUtils"
@@ -22,7 +22,9 @@ const CityPage = () => {
         const updated = toggleFavorite(name);
         setFavorite(updated.includes(name));
     }
-
+    if (!cityData) {
+        return <p>City not found</p>;
+    }
     return (
         <CityCard
             city={cityData}

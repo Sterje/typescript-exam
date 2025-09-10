@@ -1,0 +1,22 @@
+[
+  { "name": "Stockholm", "timezone": "Europe/Stockholm" },
+  { "name": "New York", "timezone": "America/New_York" },
+  { "name": "Tokyo", "timezone": "Asia/Tokyo" },
+  { "name": "London", "timezone": "Europe/London" },
+  { "name": "Sydney", "timezone": "Australia/Sydney" },
+  { "name": "Paris", "timezone": "Europe/Paris" },
+  { "name": "Berlin", "timezone": "Europe/Berlin" },
+  { "name": "Moscow", "timezone": "Europe/Moscow" },
+  { "name": "Beijing", "timezone": "Asia/Shanghai" },
+  { "name": "Cairo", "timezone": "Africa/Cairo" },
+  { "name": "Rio de Janeiro", "timezone": "America/Sao_Paulo" },
+  { "name": "Los Angeles", "timezone": "America/Los_Angeles" },
+  { "name": "Dubai", "timezone": "Asia/Dubai" },
+  { "name": "Mumbai", "timezone": "Asia/Kolkata" },
+  { "name": "Toronto", "timezone": "America/Toronto" },
+  { "name": "Mexico City", "timezone": "America/Mexico_City" },
+  { "name": "Buenos Aires", "timezone": "America/Argentina/Buenos_Aires" },
+  { "name": "Johannesburg", "timezone": "Africa/Johannesburg" },
+  { "name": "Singapore", "timezone": "Asia/Singapore" },
+  { "name": "Hong Kong", "timezone": "Asia/Hong_Kong" }
+]

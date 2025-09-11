@@ -1,4 +1,3 @@
-// src/components/Navbar.tsx
 import { useState, useEffect } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import type { City } from '../../types/types';
@@ -7,10 +6,13 @@ import CitySelect from '../CitySelect/CitySelect';
 import './Navbar.css';
 
 const Navbar = () => {
+    // State to manage if the mobile menu is open
   const [menuOpen, setMenuOpen] = useState(false);
+  // State to store all cities
   const [allCities, setAllCities] = useState<City[]>([]);
   const navigate = useNavigate();
-
+  // Get all cities on mount and refresh every second to include newly added cities
+  // We are using getAllCities util to fetch cities
   useEffect(() => {
     setAllCities(getAllCities());
 
@@ -20,41 +22,42 @@ const Navbar = () => {
 
     return () => clearInterval(interval);
   }, []);
+  // Function to handle city selection from the dropdown
+  const handleCitySelect = (city: City) => {
+  if (city?.name) {
+    navigate(`/city/${city.name}`);
+    setMenuOpen(false);
+  }
+};
 
-  const handleCitySelect = (cityName: string) => {
-    if (cityName) {
-      navigate(`/city/${cityName}`);
-      setMenuOpen(false);
-    }
-  };
 
   return (
     <nav className="navbar">
-      <div className="navbar-left">
-        <h1>🌍 World Clock</h1>
-      </div>
+      <section className="navbar-left">
+        <h1 id="navbar-title">World Clock</h1>
+      </section>
 
-      <div className="navbar-right desktop">
+      <section className="navbar-right desktop">
         <CitySelect cities={allCities} onSelect={handleCitySelect} />
         <NavLink to="/" className="nav-link">Home</NavLink>
         <NavLink to="/favorites" className="nav-link">Favorites</NavLink>
-        <NavLink to="/add-city" className="nav-link">Lägg till stad</NavLink>
-      </div>
+        <NavLink to="/add-city" className="nav-link">Add city</NavLink>
+      </section>
 
-      <div className="hamburger" onClick={() => setMenuOpen(true)}>☰</div>
-
+      <section className="hamburger" onClick={() => setMenuOpen(true)}>☰</section>
+    {/* If menu is open, show overlay */}
       {menuOpen && (
-        <div className="overlay-menu">
-          <div className="overlay-content">
+        <section className="overlay-menu">
+          <section className="overlay-content">
             <button className="close-btn" onClick={() => setMenuOpen(false)}>✕</button>
 
             <CitySelect cities={allCities} onSelect={handleCitySelect} />
 
             <NavLink to="/" className="overlay-link" onClick={() => setMenuOpen(false)}>Home</NavLink>
             <NavLink to="/favorites" className="overlay-link" onClick={() => setMenuOpen(false)}>Favorites</NavLink>
-            <NavLink to="/add-city" className="overlay-link" onClick={() => setMenuOpen(false)}>Lägg till stad</NavLink>
-          </div>
-        </div>
+            <NavLink to="/add-city" className="overlay-link" onClick={() => setMenuOpen(false)}>Add city</NavLink>
+          </section>
+        </section>
       )}
     </nav>
   );

@@ -1,5 +1,3 @@
-/* Favorites.css */
-
 .favorites-container {
   padding: 30px 20px;
   max-width: 1200px;
@@ -19,7 +17,6 @@
   gap: 20px;
 }
 
-/* Responsivitet */
 @media (max-width: 600px) {
   .favorites-title {
     font-size: 1.5rem;

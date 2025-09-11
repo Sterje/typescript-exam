@@ -57,18 +57,24 @@
 }
 
 .favorite-button {
-  padding: 10px 15px;
-  font-size: 1rem;
-  background-color: #0077cc;
-  color: white;
+  padding: 10px 16px;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.favorite-button:hover {
-  background-color: #005fa3;
+.favorite-button.add {
+  background-color: #007bff;
+  color: white;
 }
+
+.favorite-button.remove {
+  background-color: #dc3545;
+  color: white;
+}
+
 
 @media (max-width: 480px) {
   .city-card {

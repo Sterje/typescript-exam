@@ -16,6 +16,6 @@ export const toggleFavorite = (id: string): string[] => {
   return updated;
 };
 // Function to check if a city is in favorites
-export const isFavorite = (cityName: string): boolean => {
-  return getFavorites().includes(cityName);
+export const isFavorite = (cityId: string): boolean => {
+  return getFavorites().includes(cityId);
 };

@@ -15,11 +15,16 @@ const CityPage = () => {
 useEffect(() => {
   const allCities = getAllCities();
   if (cityName) {
-    const matchedCity = allCities.find(c => c.name.toLowerCase() === cityName.toLowerCase());
+    const matchedCity = allCities.find(c =>
+      c.name.trim().toLowerCase() === cityName.trim().toLowerCase()
+    );
     setCityData(matchedCity);
-    setFavorite(isFavorite(cityName));
+    if (matchedCity) {
+      setFavorite(isFavorite(matchedCity.id)); // ✅ rätt ID
+    }
   }
 }, [cityName]);
+
 
 
     const handleToggleFavorite = (name: string) => {

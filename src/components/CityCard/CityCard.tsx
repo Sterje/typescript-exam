@@ -63,7 +63,10 @@ const CityCard: React.FC<CityCardProps> = ({
         </section>
       )}
 
-      <button className="favorite-button" onClick={handleFavoriteClick}>
+      <button
+        className={`favorite-button ${isFavorite ? "remove" : "add"}`}
+        onClick={handleFavoriteClick}
+      >
         {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
       </button>
     </section>

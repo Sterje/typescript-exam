@@ -17,6 +17,13 @@
   gap: 20px;
 }
 
+#no-favorites-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 10rem;
+}
+
 @media (max-width: 600px) {
   .favorites-title {
     font-size: 1.5rem;

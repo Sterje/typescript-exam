@@ -6,6 +6,7 @@ import type { City } from "../../types/types"
 import CityCard from "../../components/CityCard/CityCard"
 import { toggleFavorite, isFavorite } from "../../utils/favoriteUtils"
 import SearchCity from "../../components/SearchCity/SearchCity"
+import "./CityPage.css"
 
 const CityPage = () => {
     const { cityName } = useParams<{ cityName: string }>();
@@ -36,12 +37,15 @@ useEffect(() => {
     }
     return (
         <>
-            <SearchCity />
+       
             <CityCard
                 city={cityData}
                 isFavorite={favorite}
                 onToggleFavorite={handleToggleFavorite}
             />
+            <section className="city-page-search">
+            <SearchCity />
+        </section>
         </>
     )
 }

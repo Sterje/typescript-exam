@@ -26,19 +26,28 @@ const SearchCity = () => {
   };
 
   return (
-    <section className="search-input-container">
-      <input
-        id="search-input"
-        type="text"
-        placeholder="Search city..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        onKeyDown={handleKeyPress}
-      />
-      <button onClick={handleSearch} id="search-button">
-        Search
-      </button>
-      {error && <p className="error-message">{error}</p>}
+    <section className="search-container">
+      <section className="search-input-wrapper">
+        <section className="search-input-container">
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search city..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={handleKeyPress}
+          />
+          <section className="search-button-container">
+            <button onClick={handleSearch} id="search-button">
+              Search
+            </button>
+          </section>
+        </section>
+      </section>
+
+      <section className="error-message-container">
+        {error && <p className="error-message">{error}</p>}
+      </section>
     </section>
   );
 };

@@ -1,0 +1,38 @@
+#add-city-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#add-city-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#city-name-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+#timezone-select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+#add-city-button {
+  padding: 10px;
+  width: 100%;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#add-city-message {
+    margin-top: 10px;
+    color: green;
+}

@@ -71,8 +71,18 @@
   color: white;
 }
 
+.favorite-button.add:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
 .favorite-button.remove {
   background-color: #dc3545;
+  color: white;
+}
+
+.favorite-button.remove:hover {
+  background-color: #a71d2a;
   color: white;
 }
 

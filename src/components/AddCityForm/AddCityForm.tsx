@@ -57,6 +57,7 @@ const AddCityForm = () => {
       />
 
       <select
+        aria-label="Select timezone"
         id="timezone-select"
         value={timezone}
         onChange={e => setTimezone(e.target.value as TimeZone)}>

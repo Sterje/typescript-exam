@@ -7,11 +7,16 @@ import CityCard from "../../components/CityCard/CityCard"
 import { toggleFavorite, isFavorite } from "../../utils/favoriteUtils"
 import SearchCity from "../../components/SearchCity/SearchCity"
 
+// CityPage component to display details of a specific city
 const CityPage = () => {
+    // Get cityName from URL parameters
     const { cityName } = useParams<{ cityName: string }>();
+    // State to hold city data
     const [cityData, setCityData] = useState<City | undefined>(undefined);
+    // State to manage if the city is a favorite
     const [favorite, setFavorite] = useState<boolean>(false);
 
+    // On component mount or when cityName changes, fetch city data
 useEffect(() => {
   const allCities = getAllCities();
   if (cityName) {

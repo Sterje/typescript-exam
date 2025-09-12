@@ -1,6 +1,7 @@
 import type { City } from "../types/types";
 import { getAllCities } from './cityUtils';
 
+// Function to find a city by name
 export const findCityByName = (query: string): City | undefined => {
   const allCities: City[] = getAllCities();
   return allCities.find(

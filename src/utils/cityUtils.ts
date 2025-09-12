@@ -1,4 +1,5 @@
 import type { City } from "../types/types";
+// Imports the cities from the data file into defaultCities
 import { cities as defaultCities } from "../data/cities";
 
 export const getAllCities = (): City[] => {

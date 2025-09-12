@@ -6,7 +6,6 @@ import type { City } from "../../types/types"
 import CityCard from "../../components/CityCard/CityCard"
 import { toggleFavorite, isFavorite } from "../../utils/favoriteUtils"
 import SearchCity from "../../components/SearchCity/SearchCity"
-import "./CityPage.css"
 
 const CityPage = () => {
     const { cityName } = useParams<{ cityName: string }>();

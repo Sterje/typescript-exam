@@ -33,7 +33,7 @@ export type TimeZone =
 export interface City {
   id: string;
   name: string;
-  timezone: TimeZone;
+  timezone: TimeZone; // Timezone identifier from the list type TimeZone above
   isCustom?: boolean; // If the city has been added by the user
 }
 
@@ -45,7 +45,7 @@ export interface ClockSettings {
 
 /** Interface for favorites */
 export interface FavoriteData {
-  cities: string[]; 
+  cities: string[];
 }
 
 /** Interface for user settings */

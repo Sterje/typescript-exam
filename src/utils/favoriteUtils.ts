@@ -1,5 +1,7 @@
 // Function to get favorites from localStorage
+// 
 export const getFavorites = (): string[] => {
+    // Retrieve the favorites array from localStorage, or return an empty array if not found
   return JSON.parse(localStorage.getItem("favorites") || "[]");
 };
 

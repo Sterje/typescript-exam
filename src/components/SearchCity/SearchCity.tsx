@@ -17,6 +17,7 @@ const SearchCity = () => {
     } else {
       setError("City not found");
     }
+    setQuery('');
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -37,11 +38,11 @@ const SearchCity = () => {
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyPress}
           />
-          <section className="search-button-container">
+          {/* <section className="search-button-container">
             <button onClick={handleSearch} id="search-button">
               Search
             </button>
-          </section>
+          </section> */}
         </section>
       </section>
 

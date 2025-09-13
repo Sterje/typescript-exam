@@ -43,14 +43,4 @@ export interface ClockSettings {
   showDigital: boolean;
 }
 
-/** Interface for favorites */
-export interface FavoriteData {
-  cities: string[];
-}
 
-/** Interface for user settings */
-export interface UserSettings {
-  favorites: FavoriteData;
-  customCities: City[];
-  clockSettings: ClockSettings;
-}

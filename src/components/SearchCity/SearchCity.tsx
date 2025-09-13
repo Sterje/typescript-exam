@@ -68,14 +68,6 @@ const SearchCity = () => {
     <section className="search-container">
       <section className="search-input-wrapper">
         <section className="search-input-container" ref={containerRef}>
-          {/* <input
-            id="search-input"
-            type="text"
-            placeholder="Search city..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onKeyDown={handleKeyPress}
-          /> */}
           <input
             id="search-input"
             type="text"

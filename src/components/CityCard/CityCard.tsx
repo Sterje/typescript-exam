@@ -1,43 +1,40 @@
 import React, { useEffect, useState } from "react";
-
 import type { City } from "../../types/types";
 import { DateTime } from "luxon";
+import { getLocalTime } from "../../utils/timeUtils"; // ✅ Importera funktionen
 import "./CityCard.css";
 
-// Props for the CityCard component coming from CityPage
 interface CityCardProps {
   city: City;
   isFavorite?: boolean;
   onToggleFavorite?: (cityName: string) => void;
 }
-// Destructuring props and setting default for isFavorite
+
 const CityCard: React.FC<CityCardProps> = ({
   city,
   isFavorite = false,
   onToggleFavorite,
 }) => {
-  // State to hold the current local time in the city's timezone
-  // DateTime coming from luxon or null before it's set
   const [localTime, setLocalTime] = useState<DateTime | null>(null);
 
   useEffect(() => {
-    // If city or timezone is not defined, do nothing, else set the local time
     if (!city?.timezone) return;
-    setLocalTime(DateTime.now().setZone(city.timezone));
 
-    // Update the time every second
+    setLocalTime(getLocalTime(city.timezone));
+
     const interval = setInterval(() => {
-      setLocalTime(DateTime.now().setZone(city.timezone));
+      setLocalTime(getLocalTime(city.timezone));
     }, 1000);
+
     return () => clearInterval(interval);
   }, [city?.timezone]);
-  // Function to handle favorite button click
+
   const handleFavoriteClick = () => {
-    // IF onToggleFavorite prop is True, call it with the city id
     if (onToggleFavorite) {
       onToggleFavorite(city.id);
     }
   };
+
   return (
     <section className="city-card">
       <h2 className="city-name">{city.name}</h2>

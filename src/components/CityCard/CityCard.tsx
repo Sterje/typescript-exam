@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
 import type { City } from "../../types/types";
 import { DateTime } from "luxon";
-import { getLocalTime } from "../../utils/timeUtils"; // ✅ Importera funktionen
+import { getLocalTime } from "../../utils/timeUtils"; 
 import "./CityCard.css";
 
+// Props interface for CityCard component
 interface CityCardProps {
   city: City;
   isFavorite?: boolean;
   onToggleFavorite?: (cityName: string) => void;
 }
-
+// CityCard component to display city's local time and favorite status
 const CityCard: React.FC<CityCardProps> = ({
+  // Incoming props
   city,
   isFavorite = false,
   onToggleFavorite,
 }) => {
   const [localTime, setLocalTime] = useState<DateTime | null>(null);
-
+  // To update time every second
   useEffect(() => {
     if (!city?.timezone) return;
 
@@ -29,6 +31,8 @@ const CityCard: React.FC<CityCardProps> = ({
     return () => clearInterval(interval);
   }, [city?.timezone]);
 
+  // Handle favorite button click
+  // If onToggleFavorite prop is provided, call it with the city's name
   const handleFavoriteClick = () => {
     if (onToggleFavorite) {
       onToggleFavorite(city.id);
@@ -41,6 +45,7 @@ const CityCard: React.FC<CityCardProps> = ({
       <p className="digital-time">
         {localTime ? localTime.toFormat("HH:mm:ss") : "Loading..."}
       </p>
+      
       {localTime && (
         <section className="analog-clock">
           <section className="clock-face">

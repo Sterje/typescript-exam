@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { City, TimeZone } from '../../types/types';
 import { v4 as uuidv4 } from 'uuid';
 import './AddCityForm.css';
-
+// List of timezone options
 const timeZones: TimeZone[] = [
   'Europe/Stockholm', 'America/New_York', 'Asia/Tokyo', 'Australia/Sydney',
   'Africa/Cairo', 'Europe/London', 'America/Los_Angeles', 'Asia/Dubai',
@@ -10,10 +10,13 @@ const timeZones: TimeZone[] = [
   'Pacific/Auckland', 'Africa/Johannesburg', 'Europe/Berlin',
   'Asia/Singapore', 'America/Toronto', 'Asia/Seoul', 'Europe/Moscow'
 ];
-
+// Form component to add a new city
 const AddCityForm = () => {
+  // State to hold city name
   const [name, setName] = useState('');
+  // State to hold selected timezone
   const [timezone, setTimezone] = useState<TimeZone>('Europe/Stockholm');
+  // State to hold feedback message
   const [message, setMessage] = useState('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -23,24 +26,24 @@ const AddCityForm = () => {
       setMessage('Stadsnamn krävs.');
       return;
     }
-
+    // Create new city object using the City interface
     const newCity: City = {
       id: uuidv4(),
       name: name.trim(),
       timezone,
       isCustom: true
     };
-
+    // Fetch custom cities from localStorage
     const existing: City[] = JSON.parse(localStorage.getItem('customCities') || '[]');
-
+    // Checks if city already exists
     if (existing.some(city => city.name.toLowerCase() === newCity.name.toLowerCase())) {
-      setMessage('Staden finns redan.');
+      setMessage('City already exists.');
       return;
     }
-
+    // Save updated city list to localStorage
     const updated = [...existing, newCity];
     localStorage.setItem('customCities', JSON.stringify(updated));
-    setMessage(`Staden "${newCity.name}" har lagts till!`);
+    setMessage(`City "${newCity.name}" has been added!`);
     setName('');
   };
 

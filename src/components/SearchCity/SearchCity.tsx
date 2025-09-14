@@ -52,7 +52,7 @@ const SearchCity = () => {
       handleSearch();
     }
   };
-
+  // Function to handle input changes in the search field and give suggestions
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setQuery(value);

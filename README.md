@@ -115,7 +115,7 @@ Jag har försökt bryta ut så mycket logik jag kan från komponenterna.
 
     ---
 
-  **Git**
+  **Git**  
     - Jag har försökt arbeta med feature brancher. Jag har mergat brancherna till dev efterhand funktioner blivit klara.
     I det stora hela har det gått bra men ibland upptäcker jag att jag står i fel branch när jag jobbar. Men inga stora git problem i detta projekt.
 

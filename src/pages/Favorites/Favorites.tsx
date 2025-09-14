@@ -38,7 +38,7 @@ const Favorites = () => {
     <section className="favorites-page">
       <h2 className="favorites-title">Favorite Cities</h2>
       {favoriteCities.length === 0 ? (
-        <p>No favorite cities added yet.</p>
+        <p id="no-favorites-message">No favorite cities added yet.</p>
       ) : (
         <section className="favorites-grid">
           {favoriteCities.map((city) => (

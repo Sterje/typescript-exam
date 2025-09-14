@@ -1,49 +1,51 @@
 import React, { useEffect, useState } from "react";
-
 import type { City } from "../../types/types";
 import { DateTime } from "luxon";
+import { getLocalTime } from "../../utils/timeUtils"; 
 import "./CityCard.css";
 
-// Props for the CityCard component coming from CityPage
+// Props interface for CityCard component
 interface CityCardProps {
   city: City;
   isFavorite?: boolean;
   onToggleFavorite?: (cityName: string) => void;
 }
-// Destructuring props and setting default for isFavorite
+// CityCard component to display city's local time and favorite status
 const CityCard: React.FC<CityCardProps> = ({
+  // Incoming props
   city,
   isFavorite = false,
   onToggleFavorite,
 }) => {
-  // State to hold the current local time in the city's timezone
-  // DateTime coming from luxon or null before it's set
   const [localTime, setLocalTime] = useState<DateTime | null>(null);
-
+  // To update time every second
   useEffect(() => {
-    // If city or timezone is not defined, do nothing, else set the local time
     if (!city?.timezone) return;
-    setLocalTime(DateTime.now().setZone(city.timezone));
 
-    // Update the time every second
+    setLocalTime(getLocalTime(city.timezone));
+
     const interval = setInterval(() => {
-      setLocalTime(DateTime.now().setZone(city.timezone));
+      setLocalTime(getLocalTime(city.timezone));
     }, 1000);
+
     return () => clearInterval(interval);
   }, [city?.timezone]);
-  // Function to handle favorite button click
+
+  // Handle favorite button click
+  // If onToggleFavorite prop is provided, call it with the city's name
   const handleFavoriteClick = () => {
-    // IF onToggleFavorite prop is True, call it with the city id
     if (onToggleFavorite) {
       onToggleFavorite(city.id);
     }
   };
+
   return (
     <section className="city-card">
       <h2 className="city-name">{city.name}</h2>
       <p className="digital-time">
         {localTime ? localTime.toFormat("HH:mm:ss") : "Loading..."}
       </p>
+      
       {localTime && (
         <section className="analog-clock">
           <section className="clock-face">

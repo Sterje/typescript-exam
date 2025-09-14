@@ -7,8 +7,9 @@
   border-radius: 10px;
   padding: 20px;
   margin: 20px auto;
+  width: 90%;
   max-width: 400px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .city-name {
@@ -70,8 +71,18 @@
   color: white;
 }
 
+.favorite-button.add:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
 .favorite-button.remove {
   background-color: #dc3545;
+  color: white;
+}
+
+.favorite-button.remove:hover {
+  background-color: #a71d2a;
   color: white;
 }
 
